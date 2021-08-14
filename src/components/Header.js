@@ -1,16 +1,23 @@
 import { Container, Nav, Navbar, NavDropdown, Row } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 
 const Header = () => {
     return (
     <header>
         <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
             <Container>
-                <Navbar.Brand href="/home">ProShop Logo</Navbar.Brand>
+                <LinkContainer to='/'>
+                    <Navbar.Brand>ProShop Logo</Navbar.Brand>
+                </LinkContainer>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="/cart"><i className="fas fa-shopping-cart"></i></Nav.Link>
-                        <Nav.Link href="/login"><i className="fa fa-user"></i></Nav.Link>
+                        <LinkContainer to='/cart'>
+                            <Nav.Link><i className="fas fa-shopping-cart"></i></Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to='/login'>
+                            <Nav.Link><i className="fa fa-user"></i></Nav.Link>
+                        </LinkContainer>
                         <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -20,6 +27,7 @@ const Header = () => {
                         </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>
+        
             </Container>
         </Navbar>
     </header>
