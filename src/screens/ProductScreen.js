@@ -86,13 +86,22 @@ const ProductScreen = ({ match, history }) => {
                                                     >
                                                         {
                                                             [...Array(product.countInStock).keys()].map((x) =>(
-                                                                <option key={x+1} value={x+1}>
-                                                                    {x+1}
+                                                                <option key={x + 1} value={x + 1}>
+                                                                    {x + 1}
                                                                 </option>
                                                             ))
                                                         }
 
                                                     </Form.Control>
+                                                </Col>
+
+                                                <Col md={1}>
+                                                    <Button
+                                                        type='button'
+                                                        variant='button'
+                                                        >
+
+                                                    </Button>
                                                 </Col>
                                             </Row>
                                         </ListGroup.Item>
@@ -102,7 +111,12 @@ const ProductScreen = ({ match, history }) => {
                                         <Row>
                                             <Col>Status:</Col>
                                             <Col>
-                                                <Button onClick={addToCartHandler} className='btn-block' disabled={product.countInStock == 0} type='button'>Add to Cart</Button>
+                                                <Button 
+                                                    onClick={addToCartHandler} 
+                                                    className='btn-block' 
+                                                    disabled={product.countInStock === 0} 
+                                                    type='button'
+                                                >Add to Cart</Button>
                                             </Col>
                                         </Row>
                                     </ListGroup.Item>
