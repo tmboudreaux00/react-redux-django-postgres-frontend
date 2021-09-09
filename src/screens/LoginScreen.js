@@ -7,19 +7,34 @@ import Message from '../components/Message'
 import FormContainer from '../components/FormContainer'
 import { login } from '../actions/userActions'
 
-const LoginScreen = (Location, History) => {
+const LoginScreen = ({location, history}) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const redirect = Location.search ? Location.search.split('=')[1] : '/'
+    const dispatch = useDispatch()
+
+    const redirect = location.search ? location.search.split('=')[1] : '/'
+
+    const userLogin = useSelector(state => state.userLogin)
+    const {error, loading, userInfo} = userLogin
+
+    useEffect(() => {
+        if(userInfo){
+            history.push(redirect)
+        }
+    }, [history, userInfo, redirect])
 
     const submitHandler = e => {
         e.preventDefault()
+        dispatch(login(email, password))
         console.log('Submitted');
     }
     return (
             <FormContainer>
                 <h1>Sign In</h1>
+                {error && <Message variant='danger'>{error}</Message>}
+                {loading && <Loader />}
+
                 <Form onSubmit={submitHandler}>
                     <Form.Group controlId='email'>
                         <Form.Label>
