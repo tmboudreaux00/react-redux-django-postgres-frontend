@@ -28,7 +28,7 @@ const RegisterScreen = ({location, history}) => {
 
     const submitHandler = e => {
         e.preventDefault()
-        if(password != confirmPassword){
+        if(password !== confirmPassword){
             setMessage('Passwords do not match')
             console.log(`Error Registering: ${name} ${email} ${password} ${confirmPassword}`);
         } else {
@@ -44,7 +44,7 @@ const RegisterScreen = ({location, history}) => {
         {loading && <Loader />}
 
         <Form onSubmit={submitHandler}>
-        <Form.Group controlId='email'>
+        <Form.Group controlId='name'>
             <Form.Label>
                 Name
             </Form.Label>
