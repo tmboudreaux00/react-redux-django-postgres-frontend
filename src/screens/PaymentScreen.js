@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Form, Button, Col } from 'react-bootstrap'
+import { Form, Button, Col, FloatingLabel, } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import FormContainer from '../components/FormContainer'
 import CheckoutSteps from '../components/CheckoutSteps'
@@ -29,7 +29,7 @@ const PaymentScreen = ({history}) => {
                 <CheckoutSteps step1 step2 step3 />
                 <h1>Payment Method</h1>
                 <Form onSubmit={submitHandler}>
-                    <Form.Group controlId='address'>
+                    <Form.Group controlId='paymentmethod'>
                         <Form.Label as='legend'>
                             Select Method
                         </Form.Label>
@@ -44,7 +44,29 @@ const PaymentScreen = ({history}) => {
                             ></Form.Check>
                         </Col>
                     </Form.Group>
-    
+                    <Form.Group controlId='cardHolderName'>
+                    <Form.Label>
+                        Name on Card
+                    </Form.Label>
+                    <Col>
+                        <Form.Control type='text' placeholder='Name on Card' >
+                        </Form.Control>
+                    </Col>
+                    </Form.Group>
+
+                    <Form.Group>
+                        <Form.Label>
+                            Card Number
+                        </Form.Label>
+                        <Col>
+                        <FloatingLabel controlId='floatingCardNumber' label='CardNumber'>
+                                <Form.Control type='text' placeholder='Card Number'/>
+                        </FloatingLabel>
+                        </Col>
+                    </Form.Group>
+
+
+
                     <Button type='submit' variant='primary' className='my-3'>
                         Continue
                     </Button>
