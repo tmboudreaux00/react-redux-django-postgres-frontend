@@ -44,7 +44,7 @@ const PaymentScreen = ({history}) => {
                             ></Form.Check>
                         </Col>
                     </Form.Group>
-                    <Form.Group controlId='cardHolderName'>
+                    {/* <Form.Group controlId='cardHolderName'>
                     <Form.Label>
                         Name on Card
                     </Form.Label>
@@ -63,7 +63,7 @@ const PaymentScreen = ({history}) => {
                                 <Form.Control type='text' placeholder='Card Number'/>
                         </FloatingLabel>
                         </Col>
-                    </Form.Group>
+                    </Form.Group> */}
 
 
 
