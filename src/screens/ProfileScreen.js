@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Form, Button, Row, Col } from 'react-bootstrap'
+import { Form, Button, Row, Col, ListGroup } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { getUserDetails, updateUserProfile } from '../actions/userActions'
 import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants'
+import { getOrderDetails } from '../actions/orderActions'
 
 const ProfileScreen = ({history}) => {
     const [name, setName] = useState('')
@@ -24,6 +25,10 @@ const ProfileScreen = ({history}) => {
 
     const userUpdateProfile = useSelector(state => state.userUpdateProfile)
     const {success} = userUpdateProfile
+
+ 
+    const orderDetails = useSelector(state => state.orderDetails)
+    const {order } = orderDetails
 
     useEffect(() => {
         if(!user){
@@ -122,7 +127,14 @@ const ProfileScreen = ({history}) => {
             </Col>
             <Col md={9}>
                 <h2>My Orders</h2>
+                <ListGroup>
+                    <ListGroup.Item>
+                        Order Info
+                    </ListGroup.Item>
+
+                </ListGroup>
             </Col>
+
         </Row>
     )
 }
