@@ -32,8 +32,7 @@ const Header = () => {
                                     <NavDropdown.Item>Profile</NavDropdown.Item>
                                 </LinkContainer>
                                 <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
-
-
+                                
                             </NavDropdown>
                         ): (
                             <LinkContainer to='/login'>
@@ -41,13 +40,29 @@ const Header = () => {
                             </LinkContainer>
                         )}
 
-                        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                        {userInfo && userInfo.isAdmin && (
+                            <NavDropdown title='Admin' id='adminmenu'>
+                                <LinkContainer to='/admin/userlist'>
+                                    <NavDropdown.Item>Users</NavDropdown.Item>
+                                </LinkContainer>
+                                <LinkContainer to='/admin/productlist'>
+                                    <NavDropdown.Item>Products</NavDropdown.Item>
+                                </LinkContainer>
+                                <LinkContainer to='/admin/orderlist'>
+                                    <NavDropdown.Item>Orders</NavDropdown.Item>
+                                </LinkContainer>
+                               
+                            </NavDropdown>
+                        ) 
+                        }
+
+                        {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                        </NavDropdown>
+                        </NavDropdown> */}
                     </Nav>
                 </Navbar.Collapse>
         
