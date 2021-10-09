@@ -4,7 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
-import { listUsers } from '../actions/userActions'
+import { listUsers, deleteUser } from '../actions/userActions'
 
  const UserListScreen = ({history}) => {
 
@@ -17,17 +17,22 @@ import { listUsers } from '../actions/userActions'
     const userLogin = useSelector(state => state.userLogin)
     const  {userInfo} = userLogin
 
+    const userDelete = useSelector(state => state.userDelete)
+    const  { success: successDelete } = userDelete
+
     useEffect(() => {
         if(userInfo && userInfo.isAdmin){
             dispatch(listUsers())
         } else {
             history.push('/login')
         }
-    }, [dispatch, history])
+    }, [dispatch, history, successDelete ])
 
 
     const deleteHandler = (id) => {
-        console.log('delete: ', id)
+        if(window.confirm('Are you sure you want to delete this user?'))
+            dispatch(deleteUser(id))
+            
     }
 
      return (
@@ -41,13 +46,13 @@ import { listUsers } from '../actions/userActions'
                 : (
                 <Table striped bordered hover responsive className='table-small'>
                     <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>NAME</th>
-                        <th>EMAIL</th>
-                        <th>ADMIN</th>
-                        <th></th>
-                    </tr>
+                        <tr>
+                            <th>ID</th>
+                            <th>NAME</th>
+                            <th>EMAIL</th>
+                            <th>ADMIN</th>
+                            <th></th>
+                        </tr>
                     </thead>
                     <tbody>
                         {users.map(user => (
