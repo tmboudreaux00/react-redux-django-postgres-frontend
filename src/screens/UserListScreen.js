@@ -26,7 +26,7 @@ import { listUsers, deleteUser } from '../actions/userActions'
         } else {
             history.push('/login')
         }
-    }, [dispatch, history, successDelete ])
+    }, [dispatch, history, successDelete, userInfo ])
 
 
     const deleteHandler = (id) => {
@@ -64,7 +64,7 @@ import { listUsers, deleteUser } from '../actions/userActions'
                                  ? (<i className='fas fa-check' style={{color: 'green'}}></i>)
                                 : (<i className='fas fa-check' style={{color: 'red'}}></i>)}</td>
                                 <td>
-                                    <LinkContainer to={`/admin/user/${user._id}`}>
+                                    <LinkContainer to={`/admin/user/${user._id}/edit`}>
                                         <Button variant='light' className='btn-sm'>
                                             <i className='fas fa-edit'></i>
                                         </Button>
